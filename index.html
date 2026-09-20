@@ -102,6 +102,7 @@
     line-height: 0.9; letter-spacing: -0.01em; margin-bottom: 32px;
   }
   .hero-name .line2 { -webkit-text-stroke: 2px var(--black); color: transparent; }
+  
   .hero-bio {
     font-size: 16px; line-height: 1.7; color: var(--grey);
     max-width: 480px; margin-bottom: 40px;
@@ -131,6 +132,33 @@
   .btn-instagram:hover { background: var(--black); color: var(--white); }
 
   .ig-icon { width: 18px; height: 18px; fill: currentColor; }
+
+  /* ── NEW HERO IMAGES ── */
+  .hero-portrait {
+    width: 100%;
+    aspect-ratio: 3 / 4; /* This forces a tall portrait shape */
+    margin-bottom: 24px; 
+    background: var(--light);
+    overflow: hidden;
+  }
+  .hero-portrait img {
+    width: 100%; 
+    height: 100%;
+    object-fit: cover; 
+    object-position: top center; 
+  }
+
+  .hero-medal {
+    width: 100%;
+    height: 320px;
+    margin-top: 40px;
+    background: var(--light);
+    overflow: hidden;
+  }
+  .hero-medal img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+  }
 
   /* ── HERO STATS ── */
   .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
@@ -163,26 +191,29 @@
     gap: 3px;
     padding-bottom: 0;
   }
+  
   .photo-slot {
     background: var(--light);
-    aspect-ratio: 4/3;
+    width: 100%; 
+    height: 350px; 
     overflow: hidden;
     position: relative;
   }
-  .photo-slot:first-child { aspect-ratio: 16/9; }
+  .photo-slot:first-child { height: 500px; }
   .photo-slot img {
-    width: 100%; height: 100%; object-fit: cover;
+    width: 100%; height: 100%; 
+    object-fit: cover; object-position: top center;
     display: block;
     transition: transform 0.4s ease;
   }
   .photo-slot:hover img { transform: scale(1.04); }
+  
   .photo-slot-placeholder {
     width: 100%; height: 100%;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     gap: 8px; color: var(--grey);
     font-size: 12px; text-align: center; padding: 16px;
-    /* REMOVE THIS ENTIRE STYLE BLOCK ONCE YOU ADD REAL IMAGES */
     border: 2px dashed var(--border);
   }
   .photo-slot-placeholder span { font-size: 28px; }
@@ -265,12 +296,10 @@
   }
   .reach-img-slot img {
     width: 100%; height: auto; display: block;
-    /* Once you add the screenshot, this shows it full width */
   }
   .reach-img-placeholder {
     display: flex; flex-direction: column; align-items: center;
     gap: 12px; color: rgba(255,255,255,0.2); text-align: center; padding: 40px;
-    /* REMOVE once you add the real Instagram insight screenshot */
   }
   .reach-img-placeholder p { font-size: 13px; line-height: 1.6; }
 
@@ -393,7 +422,7 @@
     .hero-right { order: -1; }
     .hero-stats { grid-template-columns: 1fr 1fr; }
     .photo-grid { grid-template-columns: 1fr 1fr; }
-    .photo-slot:first-child { grid-column: span 2; aspect-ratio: 16/9; }
+    .photo-slot:first-child { grid-column: span 2; height: 350px; }
     .reach-numbers { grid-template-columns: 1fr 1fr; }
     .reach-numbers .reach-stat:last-child { grid-column: span 2; }
     .calendar-grid { grid-template-columns: 1fr; }
@@ -429,11 +458,14 @@
       PRANEEL<br>
       <span class="line2">RAJESH</span>
     </h1>
-    <p class="hero-bio">
-      <div></div>I didn't come to endurance through the front door.<div> A <strong>professional badminton player</strong> with over 10 years of competitive sport, I turned to running and triathlon during one of the harder chapters of my life — and it changed everything.
-      <br><br>
-      Now building toward a <strong>100k Ultra, Hyrox, and a 70.3 Ironman.</strong> This is not a hobby. This is a second career as an athlete.
-    </p>
+    
+    <div class="hero-bio">
+      <p>I didn't come to endurance through the front door.<br>
+      A <strong>professional badminton player</strong> with over 10 years of competitive sport, I turned to running and triathlon during one of the harder chapters of my life — and it changed everything.</p>
+      <br>
+      <p>Now building toward a <strong>100k Ultra, Hyrox, and a 70.3 Ironman.</strong> This is not a hobby. This is a second career as an athlete.</p>
+    </div>
+    
     <div class="hero-buttons">
       <a href="#contact" class="btn-primary">Work with me &rarr;</a>
       <a href="https://instagram.com/praneel_226" target="_blank" class="btn-instagram">
@@ -443,9 +475,25 @@
         @praneel_226
       </a>
     </div>
+
+    <!-- MEDAL IMAGE ON LEFT -->
+    <div class="hero-medal">
+      <!-- REPLACE 'medal.jpg' with your real image name -->
+      <img src="medal.jpg" alt="Praneel with medal">
+    </div>
+
   </div>
 
-  <div class="hero-right">
+  <div class="hero-portrait">
+  <img src="Bergman finish v1.jpg" alt="Bergman finish">
+</div>
+    
+    <!-- PORTRAIT IMAGE ON RIGHT -->
+    <div class="hero-portrait">
+      <!-- REPLACE 'portrait.jpg' with your real image name -->
+      <img src="portrait.jpg" alt="Praneel Rajesh Portrait">
+    </div>
+
     <div class="hero-stats">
       <div class="stat-block">
         <div class="stat-num">10+</div>
@@ -464,45 +512,9 @@
         <div class="stat-label">Badminton background</div>
       </div>
     </div>
+
   </div>
 </section>
-
-<!-- ACTION PHOTO STRIP -->
-<!--
-  HOW TO ADD YOUR PHOTOS:
-  Replace each <div class="photo-slot-placeholder">...</div> with:
-  <img src="YOUR_PHOTO_FILENAME.jpg" alt="Description of photo">
-  
-  Save your photos in the same folder as this HTML file.
-  Best sizes: main photo ~1600x900px, smaller slots ~800x600px
--->
-<div class="photo-strip reveal">
-  <p class="photo-strip-label">In action</p>
-  <div class="photo-grid">
-    <div class="photo-slot">
-      <!-- REPLACE THIS with: <img src="your-race-photo.jpg" alt="Race day"> -->
-      <div class="photo-slot-placeholder">
-        <span>🏃</span>
-        Add your main race / run photo here<br>
-        <small>(replace placeholder div with img tag)</small>
-      </div>
-    </div>
-    <div class="photo-slot">
-      <!-- REPLACE THIS with: <img src="your-triathlon-photo.jpg" alt="Triathlon"> -->
-      <div class="photo-slot-placeholder">
-        <span>🚴</span>
-        Triathlon / bike photo
-      </div>
-    </div>
-    <div class="photo-slot">
-      <!-- REPLACE THIS with: <img src="your-badminton-photo.jpg" alt="Badminton"> -->
-      <div class="photo-slot-placeholder">
-        <span>🏸</span>
-        Badminton / action photo
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- SPORT BACKGROUND -->
 <section class="section" id="background">
@@ -553,18 +565,10 @@
   <div class="reach-screenshot reveal">
     <p class="reach-screenshot-label">Instagram Insights — screenshot</p>
     <div class="reach-img-slot">
-      <!--
-        HOW TO ADD YOUR INSTAGRAM INSIGHTS SCREENSHOT:
-        1. Screenshot your Instagram insights showing the 1.3M views
-        2. Save the image (e.g. instagram-insights.jpg) in the same folder as this HTML file
-        3. Replace the placeholder div below with:
-           <img src="instagram-insights.jpg" alt="Instagram reach 1.3M views">
-      -->
-      <div class="reach-img-placeholder">
-        <span style="font-size:40px;">📊</span>
-        <p>Add your Instagram insights screenshot here showing 1.3M views<br>
-        <small>Replace this placeholder div with an img tag pointing to your screenshot</small></p>
-      </div>
+      <!-- REPLACE 'instagram-insights.jpg' with your real screenshot -->
+      <a href="https://instagram.com/praneel_226" target="_blank">
+        <img src="instagram-insights.jpg" alt="Instagram reach 1.3M views">
+      </a>
     </div>
     <a href="https://instagram.com/praneel_226" target="_blank" class="reach-ig-btn">
       <svg style="width:18px;height:18px;fill:currentColor;" viewBox="0 0 24 24">
