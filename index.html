@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Praneel Rajesh — Athlete</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0D0D0D;
+    --white: #FFFFFF;
+    --lime: #C8F400;
+    --grey: #666666;
+    --light: #F2F2F2;
+    --border: #E0E0E0;
+    --display: 'Barlow Condensed', sans-serif;
+    --body: 'Inter', sans-serif;
+    --pad: clamp(24px, 5vw, 80px);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--body);
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .hero-left, .hero-right { animation: none; opacity: 1; transform: none; }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px var(--pad);
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--display);
+    font-weight: 800; font-size: 20px;
+    letter-spacing: 0.02em;
+    text-decoration: none; color: var(--black);
+  }
+  .nav-logo span { color: var(--lime); background: var(--black); padding: 1px 6px; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; color: var(--grey);
+    text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--black); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    padding: 120px var(--pad) 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-left { opacity: 0; transform: translateY(30px); animation: fadeUp 0.8s ease forwards 0.2s; }
+  .hero-right { opacity: 0; transform: translateY(30px); animation: fadeUp 0.8s ease forwards 0.5s; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+  .hero-eyebrow {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.12em;
+    color: var(--grey); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 32px; height: 1px; background: var(--lime);
+  }
+  .hero-name {
+    font-family: var(--display); font-weight: 900;
+    font-size: clamp(72px, 10vw, 140px);
+    line-height: 0.9; letter-spacing: -0.01em; margin-bottom: 32px;
+  }
+  .hero-name .line2 { -webkit-text-stroke: 2px var(--black); color: transparent; }
+  .hero-bio {
+    font-size: 16px; line-height: 1.7; color: var(--grey);
+    max-width: 480px; margin-bottom: 40px;
+  }
+  .hero-bio strong { color: var(--black); font-weight: 600; }
+
+  .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--black); color: var(--white);
+    padding: 14px 28px; font-size: 14px; font-weight: 600;
+    text-decoration: none; letter-spacing: 0.04em;
+    transition: background 0.2s, color 0.2s;
+    border: 2px solid var(--black);
+  }
+  .btn-primary:hover { background: var(--lime); color: var(--black); border-color: var(--lime); }
+
+  .btn-instagram {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: transparent; color: var(--black);
+    padding: 14px 28px; font-size: 14px; font-weight: 600;
+    text-decoration: none; letter-spacing: 0.04em;
+    border: 2px solid var(--black);
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-instagram:hover { background: var(--black); color: var(--white); }
+
+  .ig-icon { width: 18px; height: 18px; fill: currentColor; }
+
+  /* ── HERO STATS ── */
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .stat-block { background: var(--light); padding: 36px 28px; }
+  .stat-block:first-child { background: var(--black); }
+  .stat-block:first-child .stat-num { color: var(--lime); }
+  .stat-block:first-child .stat-label { color: rgba(255,255,255,0.5); }
+  .stat-num {
+    font-family: var(--display); font-weight: 900; font-size: 56px;
+    line-height: 1; margin-bottom: 8px;
+  }
+  .stat-label {
+    font-size: 12px; font-weight: 500; color: var(--grey);
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  /* ── ACTION PHOTO STRIP ── */
+  .photo-strip {
+    padding: 0 var(--pad) 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .photo-strip-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+    color: var(--grey); padding: 40px 0 20px;
+    text-transform: uppercase;
+  }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3px;
+    padding-bottom: 0;
+  }
+  .photo-slot {
+    background: var(--light);
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    position: relative;
+  }
+  .photo-slot:first-child { aspect-ratio: 16/9; }
+  .photo-slot img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .photo-slot:hover img { transform: scale(1.04); }
+  .photo-slot-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 8px; color: var(--grey);
+    font-size: 12px; text-align: center; padding: 16px;
+    /* REMOVE THIS ENTIRE STYLE BLOCK ONCE YOU ADD REAL IMAGES */
+    border: 2px dashed var(--border);
+  }
+  .photo-slot-placeholder span { font-size: 28px; }
+
+  /* ── SECTIONS ── */
+  .section { padding: 100px var(--pad); border-bottom: 1px solid var(--border); }
+  .section-header { display: flex; align-items: baseline; gap: 24px; margin-bottom: 60px; }
+  .section-title {
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1; letter-spacing: -0.01em;
+  }
+  .section-count {
+    font-family: var(--display); font-weight: 700; font-size: 20px;
+    color: var(--lime); background: var(--black); padding: 2px 10px;
+  }
+
+  /* ── SPORT ROWS ── */
+  .sport-row {
+    display: grid; grid-template-columns: 200px 1fr;
+    border-top: 1px solid var(--border);
+    padding: 28px 0; align-items: start; gap: 40px;
+  }
+  .sport-row:last-child { border-bottom: 1px solid var(--border); }
+  .sport-name { font-family: var(--display); font-weight: 700; font-size: 22px; letter-spacing: 0.02em; }
+  .sport-detail { font-size: 15px; color: var(--grey); line-height: 1.6; padding-top: 3px; }
+  .sport-badge {
+    display: inline-block; background: var(--lime); color: var(--black);
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    padding: 3px 8px; margin-left: 10px; vertical-align: middle; text-transform: uppercase;
+  }
+
+  /* ── INSTAGRAM REACH ── */
+  .reach-section {
+    background: var(--black);
+    padding: 100px var(--pad);
+    border-bottom: 1px solid #222;
+  }
+  .reach-section .section-title { color: var(--white); margin-bottom: 16px; }
+  .reach-subtitle { color: rgba(255,255,255,0.4); font-size: 15px; margin-bottom: 60px; }
+
+  .reach-numbers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 60px;
+  }
+  .reach-stat {
+    background: #1A1A1A;
+    padding: 40px 32px;
+    border-top: 3px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .reach-stat:first-child { border-color: var(--lime); }
+  .reach-stat:hover { border-color: var(--lime); }
+  .reach-num {
+    font-family: var(--display); font-weight: 900;
+    font-size: clamp(40px, 6vw, 72px);
+    color: var(--white); line-height: 1; margin-bottom: 8px;
+  }
+  .reach-num span { color: var(--lime); }
+  .reach-label { font-size: 13px; color: rgba(255,255,255,0.4); letter-spacing: 0.06em; }
+
+  /* Instagram reach screenshot slot */
+  .reach-screenshot {
+    background: #1A1A1A;
+    border: 1px solid #333;
+    padding: 32px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .reach-screenshot-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.3); text-transform: uppercase;
+  }
+  .reach-img-slot {
+    background: #111;
+    min-height: 240px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .reach-img-slot img {
+    width: 100%; height: auto; display: block;
+    /* Once you add the screenshot, this shows it full width */
+  }
+  .reach-img-placeholder {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 12px; color: rgba(255,255,255,0.2); text-align: center; padding: 40px;
+    /* REMOVE once you add the real Instagram insight screenshot */
+  }
+  .reach-img-placeholder p { font-size: 13px; line-height: 1.6; }
+
+  .reach-ig-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--lime); color: var(--black);
+    padding: 14px 28px; font-size: 14px; font-weight: 700;
+    text-decoration: none; letter-spacing: 0.04em;
+    transition: opacity 0.2s;
+    align-self: flex-start;
+  }
+  .reach-ig-btn:hover { opacity: 0.85; }
+
+  /* ── RACE CALENDAR ── */
+  .calendar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .race-card {
+    background: var(--light); padding: 40px 36px;
+    position: relative; overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  .race-card:hover { transform: translateY(-4px); }
+  .race-card.featured { background: var(--black); grid-column: span 2; }
+  .race-card.featured:hover { transform: none; }
+  .race-card.featured .race-name { color: var(--white); }
+  .race-card.featured .race-desc { color: rgba(255,255,255,0.5); }
+  .race-card.featured .race-year { color: var(--lime); }
+  .race-year {
+    font-family: var(--display); font-weight: 700; font-size: 13px;
+    letter-spacing: 0.12em; color: var(--grey); margin-bottom: 16px;
+  }
+  .race-name {
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1; margin-bottom: 12px; letter-spacing: -0.01em;
+  }
+  .race-desc { font-size: 14px; color: var(--grey); line-height: 1.6; }
+  .race-tag {
+    position: absolute; top: 36px; right: 36px;
+    background: var(--lime); color: var(--black);
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    padding: 4px 10px; text-transform: uppercase;
+  }
+
+  /* ── WHAT I OFFER ── */
+  .offer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+  .offer-card {
+    padding: 44px 40px; border: 1px solid var(--border);
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .offer-card:hover { border-color: var(--lime); transform: translateY(-3px); }
+  .offer-icon {
+    width: 40px; height: 40px; background: var(--lime);
+    margin-bottom: 24px; display: flex; align-items: center; justify-content: center; font-size: 18px;
+  }
+  .offer-title { font-family: var(--display); font-weight: 700; font-size: 24px; margin-bottom: 12px; }
+  .offer-desc { font-size: 14px; color: var(--grey); line-height: 1.7; }
+
+  /* ── OPEN TO ── */
+  .open-section { background: var(--black); padding: 100px var(--pad); }
+  .open-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 60px; }
+  .open-card {
+    background: #1A1A1A; padding: 32px 28px;
+    border-top: 3px solid transparent; transition: border-color 0.2s;
+  }
+  .open-card:hover { border-color: var(--lime); }
+  .open-card-title { font-family: var(--display); font-weight: 700; font-size: 20px; color: var(--white); margin-bottom: 8px; }
+  .open-card-desc { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    padding: 100px var(--pad);
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .contact-headline {
+    font-family: var(--display); font-weight: 900;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 0.9; letter-spacing: -0.02em;
+  }
+  .contact-headline .accent {
+    color: var(--lime); background: var(--black);
+    padding: 4px 12px; display: inline-block;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 0; }
+  .contact-item {
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 20px 0; border-bottom: 1px solid var(--border);
+  }
+  .contact-item:last-child { border: none; }
+  .contact-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    color: var(--grey); text-transform: uppercase;
+  }
+  .contact-value {
+    font-family: var(--display); font-weight: 700; font-size: 22px;
+    color: var(--black); text-decoration: none; transition: color 0.2s;
+  }
+  .contact-value:hover { color: var(--grey); }
+
+  .ig-follow-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--black); color: var(--white);
+    padding: 16px 32px; font-size: 15px; font-weight: 600;
+    text-decoration: none; letter-spacing: 0.04em;
+    margin-top: 32px; border: 2px solid var(--black);
+    transition: background 0.2s, color 0.2s;
+  }
+  .ig-follow-btn:hover { background: var(--lime); color: var(--black); border-color: var(--lime); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 24px var(--pad); border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer p { font-size: 12px; color: var(--grey); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; gap: 48px; }
+    .hero-right { order: -1; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .photo-grid { grid-template-columns: 1fr 1fr; }
+    .photo-slot:first-child { grid-column: span 2; aspect-ratio: 16/9; }
+    .reach-numbers { grid-template-columns: 1fr 1fr; }
+    .reach-numbers .reach-stat:last-child { grid-column: span 2; }
+    .calendar-grid { grid-template-columns: 1fr; }
+    .race-card.featured { grid-column: span 1; }
+    .offer-grid { grid-template-columns: 1fr; }
+    .open-grid { grid-template-columns: 1fr; }
+    .contact-section { grid-template-columns: 1fr; }
+    .sport-row { grid-template-columns: 1fr; gap: 8px; }
+    .nav-links { display: none; }
+    .hero-buttons { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">PR<span>226</span></a>
+  <ul class="nav-links">
+    <li><a href="#background">Background</a></li>
+    <li><a href="#reach">Reach</a></li>
+    <li><a href="#calendar">Calendar</a></li>
+    <li><a href="#partnerships">Partnerships</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Athlete · Sports Management · Content Creator</p>
+    <h1 class="hero-name">
+      PRANEEL<br>
+      <span class="line2">RAJESH</span>
+    </h1>
+    <p class="hero-bio">
+      I didn't come to endurance through the front door. A <strong>professional badminton player</strong> with over 10 years of competitive sport, I turned to running and triathlon during one of the harder chapters of my life — and it changed everything.
+      <br><br>
+      Now building toward a <strong>100k Ultra, Hyrox, and a 70.3 Ironman.</strong> This is not a hobby. This is a second career as an athlete.
+    </p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">Work with me &rarr;</a>
+      <a href="https://instagram.com/praneel_226" target="_blank" class="btn-instagram">
+        <svg class="ig-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+        </svg>
+        @praneel_226
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat-block">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Years competitive sport</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Marathons completed</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Triathlon completed</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">Pro</div>
+        <div class="stat-label">Badminton background</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTION PHOTO STRIP -->
+<!--
+  HOW TO ADD YOUR PHOTOS:
+  Replace each <div class="photo-slot-placeholder">...</div> with:
+  <img src="YOUR_PHOTO_FILENAME.jpg" alt="Description of photo">
+  
+  Save your photos in the same folder as this HTML file.
+  Best sizes: main photo ~1600x900px, smaller slots ~800x600px
+-->
+<div class="photo-strip reveal">
+  <p class="photo-strip-label">In action</p>
+  <div class="photo-grid">
+    <div class="photo-slot">
+      <!-- REPLACE THIS with: <img src="your-race-photo.jpg" alt="Race day"> -->
+      <div class="photo-slot-placeholder">
+        <span>🏃</span>
+        Add your main race / run photo here<br>
+        <small>(replace placeholder div with img tag)</small>
+      </div>
+    </div>
+    <div class="photo-slot">
+      <!-- REPLACE THIS with: <img src="your-triathlon-photo.jpg" alt="Triathlon"> -->
+      <div class="photo-slot-placeholder">
+        <span>🚴</span>
+        Triathlon / bike photo
+      </div>
+    </div>
+    <div class="photo-slot">
+      <!-- REPLACE THIS with: <img src="your-badminton-photo.jpg" alt="Badminton"> -->
+      <div class="photo-slot-placeholder">
+        <span>🏸</span>
+        Badminton / action photo
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SPORT BACKGROUND -->
+<section class="section" id="background">
+  <div class="section-header reveal">
+    <h2 class="section-title">Sport Background</h2>
+    <span class="section-count">04</span>
+  </div>
+  <div class="sport-row reveal reveal-delay-1">
+    <div class="sport-name">Badminton <span class="sport-badge">Pro</span></div>
+    <div class="sport-detail">Professional level · TV coverage · State & national tournaments</div>
+  </div>
+  <div class="sport-row reveal reveal-delay-2">
+    <div class="sport-name">Triathlon <span class="sport-badge">Active</span></div>
+    <div class="sport-detail">Bergman Olympic Triathlon completed · 70.3 Ironman targeted 2027</div>
+  </div>
+  <div class="sport-row reveal reveal-delay-3">
+    <div class="sport-name">Running</div>
+    <div class="sport-detail">Half marathon · Full marathon · TCSW 10k · 12 Hour Stadium Run 2025</div>
+  </div>
+  <div class="sport-row reveal reveal-delay-4">
+    <div class="sport-name">Racket Sports</div>
+    <div class="sport-detail">Badminton · Pickleball (Centre Court League) · Table Tennis · Cross-trained across disciplines</div>
+  </div>
+</section>
+
+<!-- INSTAGRAM REACH -->
+<section class="reach-section" id="reach">
+  <div class="reveal">
+    <h2 class="section-title" style="color:white;">Instagram Reach</h2>
+    <p class="reach-subtitle">Last 30 days — September 2026</p>
+  </div>
+
+  <div class="reach-numbers">
+    <div class="reach-stat reveal reveal-delay-1">
+      <div class="reach-num">1.3<span>M</span></div>
+      <div class="reach-label">Views in 30 days</div>
+    </div>
+    <div class="reach-stat reveal reveal-delay-2">
+      <div class="reach-num">3<span>K+</span></div>
+      <div class="reach-label">Average views per reel</div>
+    </div>
+    <div class="reach-stat reveal reveal-delay-3">
+      <div class="reach-num">↑</div>
+      <div class="reach-label">High engagement from active sports community</div>
+    </div>
+  </div>
+
+  <div class="reach-screenshot reveal">
+    <p class="reach-screenshot-label">Instagram Insights — screenshot</p>
+    <div class="reach-img-slot">
+      <!--
+        HOW TO ADD YOUR INSTAGRAM INSIGHTS SCREENSHOT:
+        1. Screenshot your Instagram insights showing the 1.3M views
+        2. Save the image (e.g. instagram-insights.jpg) in the same folder as this HTML file
+        3. Replace the placeholder div below with:
+           <img src="instagram-insights.jpg" alt="Instagram reach 1.3M views">
+      -->
+      <div class="reach-img-placeholder">
+        <span style="font-size:40px;">📊</span>
+        <p>Add your Instagram insights screenshot here showing 1.3M views<br>
+        <small>Replace this placeholder div with an img tag pointing to your screenshot</small></p>
+      </div>
+    </div>
+    <a href="https://instagram.com/praneel_226" target="_blank" class="reach-ig-btn">
+      <svg style="width:18px;height:18px;fill:currentColor;" viewBox="0 0 24 24">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+      </svg>
+      View my Instagram
+    </a>
+  </div>
+</section>
+
+<!-- RACE CALENDAR -->
+<section class="section" id="calendar">
+  <div class="section-header reveal">
+    <h2 class="section-title">Race Calendar</h2>
+  </div>
+  <div class="calendar-grid">
+    <div class="race-card reveal reveal-delay-1">
+      <div class="race-year">2026</div>
+      <div class="race-name">Wipro Marathon</div>
+      <div class="race-desc">Full marathon · Road racing · Bangalore<br>September 2026</div>
+      <div class="race-tag">Confirmed</div>
+    </div>
+    <div class="race-card reveal reveal-delay-2">
+      <div class="race-year">2027</div>
+      <div class="race-name">100k Ultra</div>
+      <div class="race-desc">First ultra distance · Personal milestone<br>Self-Supported</div>
+    </div>
+    <div class="race-card reveal reveal-delay-3">
+      <div class="race-year">2027</div>
+      <div class="race-name">Hyrox Bangalore</div>
+      <div class="race-desc">Functional fitness racing<br>Season 2027</div>
+    </div>
+    <div class="race-card featured reveal reveal-delay-4">
+      <div class="race-year">2027 — TARGET</div>
+      <div class="race-name">Ironman 70.3</div>
+      <div class="race-desc">Swim 1.9k · Bike 90k · Run 21k<br>Season-defining goal</div>
+      <div class="race-tag">Season goal</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT I OFFER -->
+<section class="section" id="partnerships">
+  <div class="section-header reveal">
+    <h2 class="section-title">What I Offer</h2>
+  </div>
+  <div class="offer-grid">
+    <div class="offer-card reveal reveal-delay-1">
+      <div class="offer-icon">📱</div>
+      <div class="offer-title">Instagram Content</div>
+      <div class="offer-desc">Reels, stories, and posts built around race events, training, and honest gear reviews. 1.3M+ views in the last 30 days with strong engagement from an active sports community.</div>
+    </div>
+    <div class="offer-card reveal reveal-delay-2">
+      <div class="offer-icon">🎯</div>
+      <div class="offer-title">Race Day Coverage</div>
+      <div class="offer-desc">Branded content at events with real media coverage — Bergmann, Wipro Marathon, Ironman 70.3. Your brand at the finish line, not just in a studio.</div>
+    </div>
+    <div class="offer-card reveal reveal-delay-3">
+      <div class="offer-icon">📈</div>
+      <div class="offer-title">Long-term Story</div>
+      <div class="offer-desc">A multi-year journey from triathlon to ultra to Ironman. Brands that come in now grow with the narrative — from early follower to season sponsor.</div>
+    </div>
+    <div class="offer-card reveal reveal-delay-4">
+      <div class="offer-icon">✅</div>
+      <div class="offer-title">Authentic Reviews</div>
+      <div class="offer-desc">Gear, nutrition, and equipment tested in real race conditions — not a PR pitch. If I use it, I mean it. That credibility transfers to your brand.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRENTLY OPEN TO -->
+<section class="open-section">
+  <h2 class="section-title reveal" style="color:white;">Currently Open To</h2>
+  <div class="open-grid">
+    <div class="open-card reveal reveal-delay-1">
+      <div class="open-card-title">Gear & Apparel</div>
+      <div class="open-card-desc">Running, triathlon, racket sports</div>
+    </div>
+    <div class="open-card reveal reveal-delay-2">
+      <div class="open-card-title">Gym & Performance</div>
+      <div class="open-card-desc">Training centres, performance facilities</div>
+    </div>
+    <div class="open-card reveal reveal-delay-3">
+      <div class="open-card-title">Nutrition & Supplements</div>
+      <div class="open-card-desc">Products I can test in real training</div>
+    </div>
+    <div class="open-card reveal reveal-delay-1">
+      <div class="open-card-title">Race Entries & Events</div>
+      <div class="open-card-desc">Sports events, competitions, activations</div>
+    </div>
+    <div class="open-card reveal reveal-delay-2">
+      <div class="open-card-title">Recovery & Wellness</div>
+      <div class="open-card-desc">Brands aligned with the endurance lifestyle</div>
+    </div>
+    <div class="open-card reveal reveal-delay-3">
+      <div class="open-card-title">Sports Management</div>
+      <div class="open-card-desc">Event operations, athlete partnerships</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="reveal">
+    <h2 class="contact-headline">
+      Let's build<br>something<br><span class="accent">worth finishing.</span>
+    </h2>
+    <a href="https://instagram.com/praneel_226" target="_blank" class="ig-follow-btn">
+      <svg style="width:18px;height:18px;fill:currentColor;" viewBox="0 0 24 24">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+      </svg>
+      Follow on Instagram
+    </a>
+  </div>
+  <div class="contact-links reveal reveal-delay-2">
+    <div class="contact-item">
+      <span class="contact-label">Instagram</span>
+      <a href="https://instagram.com/praneel_226" class="contact-value" target="_blank">@praneel_226</a>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">Email</span>
+      <a href="mailto:Connect.praneel@gmail.com" class="contact-value">Connect.praneel@gmail.com</a>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">Location</span>
+      <span class="contact-value">Bangalore, India</span>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">Media Kit</span>
+      <a href="#" class="contact-value" style="font-size:18px;">Download PDF &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Praneel Rajesh · @praneel_226 · Bangalore, India</p>
+  <p>2025/26</p>
+</footer>
+
+<!-- SCROLL REVEAL SCRIPT -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
