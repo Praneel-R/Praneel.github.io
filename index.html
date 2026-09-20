@@ -327,36 +327,57 @@
   }
   .reach-ig-btn:hover { opacity: 0.85; }
 
-  /* ── RACE CALENDAR ── */
-  .calendar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-  .race-card {
-    background: var(--light); padding: 40px 36px;
-    position: relative; overflow: hidden;
-    transition: transform 0.3s ease;
-  }
-  .race-card:hover { transform: translateY(-4px); }
-  .race-card.featured { background: var(--black); grid-column: span 2; }
-  .race-card.featured:hover { transform: none; }
-  .race-card.featured .race-name { color: var(--white); }
-  .race-card.featured .race-desc { color: rgba(255,255,255,0.5); }
-  .race-card.featured .race-year { color: var(--lime); }
-  .race-year {
-    font-family: var(--display); font-weight: 700; font-size: 13px;
-    letter-spacing: 0.12em; color: var(--grey); margin-bottom: 16px;
-  }
-  .race-name {
-    font-family: var(--display); font-weight: 800;
-    font-size: clamp(28px, 4vw, 44px);
-    line-height: 1; margin-bottom: 12px; letter-spacing: -0.01em;
-  }
-  .race-desc { font-size: 14px; color: var(--grey); line-height: 1.6; }
-  .race-tag {
-    position: absolute; top: 36px; right: 36px;
-    background: var(--lime); color: var(--black);
-    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
-    padding: 4px 10px; text-transform: uppercase;
-  }
-
+ /* ── RACE CALENDAR ── */
+.calendar-wrapper {
+  display: grid; 
+  grid-template-columns: 1fr 1fr; /* Creates left image, right cards */
+  gap: 60px;
+}
+.calendar-image {
+  width: 100%;
+  aspect-ratio: 3/4; /* Keeps a nice vertical portrait shape */
+  background: var(--light);
+  overflow: hidden;
+}
+.calendar-image img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+}
+.calendar-grid { 
+  display: grid; 
+  grid-template-columns: 1fr; /* Stacks the cards in one column */
+  gap: 2px; 
+}
+.race-card {
+  background: var(--light); padding: 40px 36px;
+  position: relative; overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.race-card:hover { transform: translateX(8px); } /* Slides right on hover */
+.race-card.featured { background: var(--black); }
+.race-card.featured:hover { transform: none; }
+.race-card.featured .race-name { color: var(--white); }
+.race-card.featured .race-desc { color: rgba(255,255,255,0.5); }
+.race-card.featured .race-year { color: var(--lime); }
+.race-year {
+  font-family: var(--display); font-weight: 700; font-size: 13px;
+  letter-spacing: 0.12em; color: var(--grey); margin-bottom: 16px;
+}
+.race-name {
+  font-family: var(--display); font-weight: 800;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1; margin-bottom: 12px; letter-spacing: -0.01em;
+}
+.race-desc { font-size: 14px; color: var(--grey); line-height: 1.6; }
+.race-tag {
+  position: absolute; top: 36px; right: 36px;
+  background: var(--lime); color: var(--black);
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  padding: 4px 10px; text-transform: uppercase;
+}
+@media (max-width: 768px) {
+  .calendar-wrapper { grid-template-columns: 1fr; gap: 40px; }
+}
   /* ── WHAT I OFFER ── */
   .offer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
   .offer-card {
@@ -594,28 +615,37 @@
   <div class="section-header reveal">
     <h2 class="section-title">Race Calendar</h2>
   </div>
-  <div class="calendar-grid">
-    <div class="race-card reveal reveal-delay-1">
-      <div class="race-year">2026</div>
-      <div class="race-name">Wipro Marathon</div>
-      <div class="race-desc">Full marathon · Road racing · Bangalore<br>September 2026</div>
-      <div class="race-tag">Confirmed</div>
+  
+  <div class="calendar-wrapper">
+    <!-- LEFT COLUMN: Image -->
+    <div class="calendar-image reveal">
+      <!-- IMPORTANT: Replace 'calendar-image.jpg' with your actual file name -->
+      <img src="calendar-image.jpg" alt="Praneel Training">
     </div>
-    <div class="race-card reveal reveal-delay-2">
-      <div class="race-year">2027</div>
-      <div class="race-name">100k Ultra</div>
-      <div class="race-desc">First ultra distance · Personal milestone<br>Self-Supported</div>
-    </div>
-    <div class="race-card reveal reveal-delay-3">
-      <div class="race-year">2027</div>
-      <div class="race-name">Hyrox Bangalore</div>
-      <div class="race-desc">Functional fitness racing<br>Season 2027</div>
-    </div>
-    <div class="race-card featured reveal reveal-delay-4">
-      <div class="race-year">2027 — TARGET</div>
-      <div class="race-name">Ironman 70.3</div>
-      <div class="race-desc">Swim 1.9k · Bike 90k · Run 21k<br>Season-defining goal</div>
-      <div class="race-tag">Season goal</div>
+
+    <!-- RIGHT COLUMN: Race Cards -->
+    <div class="calendar-grid">
+      <div class="race-card reveal reveal-delay-1">
+        <div class="race-year">2026</div>
+        <div class="race-name">Wipro Marathon</div>
+        <div class="race-desc">Full marathon · Road racing · Bangalore<br>September 2026</div>
+      </div>
+      <div class="race-card reveal reveal-delay-2">
+        <div class="race-year">2027</div>
+        <div class="race-name">100k Ultra</div>
+        <div class="race-desc">First ultra distance · Personal milestone<br>Self-Supported</div>
+      </div>
+      <div class="race-card reveal reveal-delay-3">
+        <div class="race-year">2027</div>
+        <div class="race-name">Hyrox</div>
+        <div class="race-desc">Functional fitness racing<br>Bangalore - Season 2027</div>
+      </div>
+      <div class="race-card featured reveal reveal-delay-4">
+        <div class="race-year">2027 — TARGET</div>
+        <div class="race-name">Ironman 70.3</div>
+        <div class="race-desc">Swim 1.9k · Bike 90k · Run 21k<br>Season-defining goal</div>
+        <div class="race-tag">Season goal</div>
+      </div>
     </div>
   </div>
 </section>
