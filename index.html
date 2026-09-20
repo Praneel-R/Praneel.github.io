@@ -388,18 +388,43 @@
   <h2 class="quote-text">"Endurance breaks you down so you can rebuild yourself. I’m writing a completely new chapter as an athlete, and I want brand partners who are built for the long game, not just the finish line."</h2>
 </section>
 
-<!-- WHAT I OFFER -->
-<section class="section" id="offer">
-  <div class="section-header reveal">
-    <h2 class="section-title">What I Offer</h2>
-  }
-  .offer-card:hover { border-color: var(--lime); transform: translateY(-3px); }
-  .offer-icon {
-    width: 40px; height: 40px; background: var(--lime);
-    margin-bottom: 24px; display: flex; align-items: center; justify-content: center; font-size: 18px;
-  }
-  .offer-title { font-family: var(--display); font-weight: 700; font-size: 24px; margin-bottom: 12px; }
-  .offer-desc { font-size: 14px; color: var(--grey); line-height: 1.7; }
+/* ── WHAT I OFFER ── */
+.offer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px 40px;
+}
+.offer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.offer-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--lime);
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.offer-title {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: var(--black);
+}
+.offer-desc {
+  font-size: 15px;
+  color: var(--grey);
+  line-height: 1.6;
+}
+@media (max-width: 768px) {
+  .offer-grid { grid-template-columns: 1fr; gap: 40px; }
+}
 
   /* ── OPEN TO ── */
   .open-section { background: var(--black); padding: 100px var(--pad); }
