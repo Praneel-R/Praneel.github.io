@@ -231,20 +231,34 @@
     color: var(--lime); background: var(--black); padding: 2px 10px;
   }
 
-  /* ── SPORT ROWS ── */
-  .sport-row {
-    display: grid; grid-template-columns: 200px 1fr;
-    border-top: 1px solid var(--border);
-    padding: 28px 0; align-items: start; gap: 40px;
-  }
-  .sport-row:last-child { border-bottom: 1px solid var(--border); }
-  .sport-name { font-family: var(--display); font-weight: 700; font-size: 22px; letter-spacing: 0.02em; }
-  .sport-detail { font-size: 15px; color: var(--grey); line-height: 1.6; padding-top: 3px; }
-  .sport-badge {
-    display: inline-block; background: var(--lime); color: var(--black);
-    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
-    padding: 3px 8px; margin-left: 10px; vertical-align: middle; text-transform: uppercase;
-  }
+  /* ── SPORT ROWS & BACKGROUND GRID ── */
+.bg-grid {
+  display: grid; 
+  grid-template-columns: 1.2fr 1fr; /* Gives the text slightly more room than the stats */
+  gap: 80px; 
+  align-items: center;
+}
+
+.sport-row {
+  display: grid; 
+  grid-template-columns: 140px 1fr; /* Reduced from 200px to pull content left */
+  border-top: 1px solid var(--border);
+  padding: 24px 0; 
+  align-items: start; 
+  gap: 20px; /* Reduced gap to pull the description closer to the title */
+}
+.sport-row:last-child { border-bottom: 1px solid var(--border); }
+.sport-name { font-family: var(--display); font-weight: 700; font-size: 22px; letter-spacing: 0.02em; }
+.sport-detail { font-size: 15px; color: var(--grey); line-height: 1.6; padding-top: 3px; }
+.sport-badge {
+  display: inline-block; background: var(--lime); color: var(--black);
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  padding: 3px 8px; margin-left: 10px; vertical-align: middle; text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .bg-grid { grid-template-columns: 1fr; gap: 40px; }
+}
 
   /* ── INSTAGRAM REACH ── */
   .reach-section {
@@ -508,22 +522,51 @@
 <section class="section" id="background">
   <div class="section-header reveal">
     <h2 class="section-title">Sport Background</h2>
+    <span class="section-count">04</span>
   </div>
-  <div class="sport-row reveal reveal-delay-1">
-    <div class="sport-name">Badminton <span class="sport-badge">Pro</span></div>
-    <div class="sport-detail">Professional level · TV coverage · State & national tournaments</div>
-  </div>
-  <div class="sport-row reveal reveal-delay-2">
-    <div class="sport-name">Triathlon <span class="sport-badge">Active</span></div>
-    <div class="sport-detail">Bergman Olympic Triathlon completed · 70.3 Ironman targeted 2027</div>
-  </div>
-  <div class="sport-row reveal reveal-delay-3">
-    <div class="sport-name">Running</div>
-    <div class="sport-detail">Half marathon · Full marathon · TCSW 10k · 12 Hour Stadium Run 2025</div>
-  </div>
-  <div class="sport-row reveal reveal-delay-4">
-    <div class="sport-name">Racket Sports</div>
-    <div class="sport-detail">Badminton · Pickleball (Centre Court League) · Table Tennis · Cross-trained across disciplines</div>
+
+  <div class="bg-grid">
+    <!-- LEFT COLUMN: Text Content -->
+    <div class="bg-left">
+      <div class="sport-row reveal reveal-delay-1">
+        <div class="sport-name">Badminton <span class="sport-badge">Pro</span></div>
+        <div class="sport-detail">Professional level · TV coverage · State & national tournaments</div>
+      </div>
+      <div class="sport-row reveal reveal-delay-2">
+        <div class="sport-name">Triathlon <span class="sport-badge">Active</span></div>
+        <div class="sport-detail">Bergman Olympic Triathlon completed · 70.3 Ironman targeted 2027</div>
+      </div>
+      <div class="sport-row reveal reveal-delay-3">
+        <div class="sport-name">Running</div>
+        <div class="sport-detail">Half marathon · Full marathon · TCSW 10k · 12 Hour Stadium Run 2025</div>
+      </div>
+      <div class="sport-row reveal reveal-delay-4">
+        <div class="sport-name">Racket Sports</div>
+        <div class="sport-detail">Badminton · Pickleball (Centre Court League) · Table Tennis · Cross-trained across disciplines</div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: Stats Box -->
+    <div class="bg-right reveal reveal-delay-2">
+      <div class="hero-stats">
+        <div class="stat-block">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Years competitive sport</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Marathons completed</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">1</div>
+          <div class="stat-label">Triathlon completed</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">Pro</div>
+          <div class="stat-label">Badminton background</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
