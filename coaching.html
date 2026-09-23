@@ -636,55 +636,84 @@
 
     <div class="reveal reveal-delay-2">
       <form class="coaching-form" id="coachingForm">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" name="full_name" placeholder="Rahul Sharma" required>
+        </div>
+        
         <div class="form-row">
           <div class="form-group">
-            <label>First Name</label>
-            <input type="text" name="first_name" placeholder="Rahul" required>
+            <label>Email</label>
+            <input type="email" name="email" placeholder="rahul@gmail.com" required>
           </div>
           <div class="form-group">
-            <label>Last Name</label>
-            <input type="text" name="last_name" placeholder="Sharma" required>
+            <label>WhatsApp Number</label>
+            <input type="tel" name="whatsapp" placeholder="+91 98765 43210" required>
           </div>
         </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" name="email" placeholder="rahul@gmail.com" required>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Primary Goal</label>
+            <select name="primary_goal" required>
+              <option value="" disabled selected>Select your main focus</option>
+              <option value="Fat Loss">Fat Loss & Toning</option>
+              <option value="Strength">Building Muscle & Strength</option>
+              <option value="General">General Health & Routine</option>
+              <option value="Event">Race or Event Prep</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Current Activity Level</label>
+            <select name="activity_level" required>
+              <option value="" disabled selected>How often do you train?</option>
+              <option value="Sedentary">Mostly sedentary</option>
+              <option value="Light">1-2 days/week</option>
+              <option value="Moderate">3-4 days/week</option>
+              <option value="Active">5+ days/week</option>
+            </select>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Phone / WhatsApp</label>
-          <input type="tel" name="phone" placeholder="+91 98765 43210" required>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Where will you train?</label>
+            <select name="training_environment" required>
+              <option value="" disabled selected>Select your setup</option>
+              <option value="Full Gym">Commercial Gym</option>
+              <option value="Home Gym">Home (Dumbbells/Bands)</option>
+              <option value="No Equipment">Home (Bodyweight only)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Time Commitment</label>
+            <select name="time_commitment" required>
+              <option value="" disabled selected>Hours per week</option>
+              <option value="2-3 hours">2-3 hours</option>
+              <option value="4-5 hours">4-5 hours</option>
+              <option value="6+ hours">6+ hours</option>
+            </select>
+          </div>
         </div>
+
         <div class="form-group">
-          <label>Program Interest</label>
-          <select name="program" required>
-            <option value="" disabled selected>Select a program</option>
-            <option value="general">General Fitness — ₹3,000/month</option>
-            <option value="strength">Strength Training — ₹4,500/month</option>
-            <option value="fatloss">Fat Loss — ₹6,000/month</option>
-            <option value="unsure">Not sure yet — help me decide</option>
-          </select>
+          <label>Injuries or Medical Conditions</label>
+          <input type="text" name="injuries" placeholder="List any past injuries, or type 'None'" required>
         </div>
+
         <div class="form-group">
-          <label>Your Goal</label>
-          <textarea name="goal" placeholder="Tell me what you're trying to achieve and what's held you back so far..." required></textarea>
+          <label>Your Biggest Struggle</label>
+          <textarea name="biggest_struggle" placeholder="What has been holding you back from reaching your goals? (e.g., consistency, diet, lack of a plan...)" required></textarea>
         </div>
-        <div class="form-group">
-          <label>Current Activity Level</label>
-          <select name="activity" required>
-            <option value="" disabled selected>How active are you right now?</option>
-            <option value="sedentary">Mostly sedentary — desk job, little exercise</option>
-            <option value="light">Light — occasional walks or workouts</option>
-            <option value="moderate">Moderate — training 2-3x per week</option>
-            <option value="active">Active — training 4+ times per week</option>
-          </select>
-        </div>
+
         <button type="submit" class="form-submit">Send My Application →</button>
-        <p class="form-note">No commitment required. I'll reach out within 24 hours to discuss next steps.</p>
+        <p class="form-note">I'll review your details and reach out on WhatsApp to schedule our 20-minute call.</p>
       </form>
+
       <div class="form-success" id="formSuccess">
         <div class="success-icon">✅</div>
         <h3>Application received.</h3>
-        <p>Thanks for reaching out. I'll review your goals and get back to you personally within 24 hours.<br><br>In the meantime, feel free to <a href="https://instagram.com/praneel_226" target="_blank" style="color:var(--black);font-weight:600;">follow along on Instagram</a> to see how I train.</p>
+        <p>Thanks for reaching out. I'll review your goals and get back to you personally on WhatsApp within 24 hours.</p>
       </div>
     </div>
   </div>
@@ -698,7 +727,6 @@
       <h2 class="section-title">20 minutes. No pressure. Just a real conversation.</h2>
       <p>Before anything else, let's talk. Tell me your goals and I'll tell you honestly whether I can help. No hard sell, no commitment required.</p>
       <!-- REPLACE THIS HREF with your actual Calendly link once set up -->
-      <!-- e.g. href="https://calendly.com/praneel/discovery" -->
       <a href="https://calendly.com" target="_blank" class="booking-cta">Book Your Free Call →</a>
     </div>
     <div class="booking-right reveal reveal-delay-2">
@@ -804,87 +832,6 @@
   window.addEventListener('resize', () => { buildDots(); goTo(0); });
 
   // ── FORM SUBMIT ──
- <form class="coaching-form" id="coachingForm">
-  <div class="form-group">
-    <label>Full Name</label>
-    <input type="text" name="full_name" placeholder="Rahul Sharma" required>
-  </div>
-  
-  <div class="form-row">
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" name="email" placeholder="rahul@gmail.com" required>
-    </div>
-    <div class="form-group">
-      <label>WhatsApp Number</label>
-      <input type="tel" name="whatsapp" placeholder="+91 98765 43210" required>
-    </div>
-  </div>
-
-  <div class="form-row">
-    <div class="form-group">
-      <label>Primary Goal</label>
-      <select name="primary_goal" required>
-        <option value="" disabled selected>Select your main focus</option>
-        <option value="Fat Loss">Fat Loss & Toning</option>
-        <option value="Strength">Building Muscle & Strength</option>
-        <option value="General">General Health & Routine</option>
-        <option value="Event">Race or Event Prep</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>Current Activity Level</label>
-      <select name="activity_level" required>
-        <option value="" disabled selected>How often do you train?</option>
-        <option value="Sedentary">Mostly sedentary</option>
-        <option value="Light">1-2 days/week</option>
-        <option value="Moderate">3-4 days/week</option>
-        <option value="Active">5+ days/week</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="form-row">
-    <div class="form-group">
-      <label>Where will you train?</label>
-      <select name="training_environment" required>
-        <option value="" disabled selected>Select your setup</option>
-        <option value="Full Gym">Commercial Gym</option>
-        <option value="Home Gym">Home (Dumbbells/Bands)</option>
-        <option value="No Equipment">Home (Bodyweight only)</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>Time Commitment</label>
-      <select name="time_commitment" required>
-        <option value="" disabled selected>Hours per week</option>
-        <option value="2-3 hours">2-3 hours</option>
-        <option value="4-5 hours">4-5 hours</option>
-        <option value="6+ hours">6+ hours</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>Injuries or Medical Conditions</label>
-    <input type="text" name="injuries" placeholder="List any past injuries, or type 'None'" required>
-  </div>
-
-  <div class="form-group">
-    <label>Your Biggest Struggle</label>
-    <textarea name="biggest_struggle" placeholder="What has been holding you back from reaching your goals? (e.g., consistency, diet, lack of a plan...)" required></textarea>
-  </div>
-
-  <button type="submit" class="form-submit">Send My Application →</button>
-  <p class="form-note">I'll review your details and reach out on WhatsApp to schedule our 20-minute call.</p>
-</form>
-
-<div id="formSuccess" style="display: none; padding: 2rem; background: #e8f5e9; color: #2e7d32; border-radius: 8px; margin-top: 2rem;">
-  <h3>Application Received!</h3>
-  <p>I have your details. I'll message you on WhatsApp shortly to schedule our discovery call.</p>
-</div>
-
-<script>
   document.getElementById('coachingForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = this.querySelector('.form-submit');
