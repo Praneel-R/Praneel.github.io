@@ -804,7 +804,7 @@
   window.addEventListener('resize', () => { buildDots(); goTo(0); });
 
   // ── FORM SUBMIT ──
-  document.getElementById('coachingForm').addEventListener('submit', async function(e) {
+ document.getElementById('coachingForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = this.querySelector('.form-submit');
     btn.textContent = 'Sending...';
@@ -812,13 +812,15 @@
 
     const data = Object.fromEntries(new FormData(this));
 
-    // ── SUPABASE ──
-    // Replace these with your actual Supabase URL and anon key
-    const SUPABASE_URL = 'https://mtilmgjitkytwwsyqooe.supabase.co/rest/v1/';
+    // Your Keys
+    const SUPABASE_URL = 'https://mtilmgjitkytwwsyqooe.supabase.co';
     const SUPABASE_KEY = 'sb_publishable_lFDCER5OrXQt4NjJQxs7Ng_rRyTig0I';
+    const TELEGRAM_BOT_TOKEN = '8651535571:AAFCCVTOfZOMxzPopGQCh2i97TlOlZokJpM';
+    const TELEGRAM_CHAT_ID = '733814453';
 
     try {
-      await fetch(`${SUPABASE_URL}/rest/v1/coaching_inquiries`, {
+      // 1. Save to Supabase Database
+      const supaResponse = await fetch(`${SUPABASE_URL}/rest/v1/coaching_inquiries`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -829,25 +831,42 @@
         body: JSON.stringify({ ...data, submitted_at: new Date().toISOString() })
       });
 
-      // ── TELEGRAM NOTIFICATION ──
-      // Replace with your actual bot token and chat ID
-      const TG_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN';
-      const TG_CHAT = 'YOUR_TELEGRAM_CHAT_ID';
-      const msg = `💪 <b>NEW COACHING INQUIRY</b>\n\n👤 <b>${data.first_name} ${data.last_name}</b>\n📧 ${data.email}\n📱 ${data.phone}\n🎯 Program: ${data.program}\n📊 Activity: ${data.activity}\n\n💬 <i>${data.goal}</i>`;
-      await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+      if (!supaResponse.ok) throw new Error('Database insertion failed');
+
+      // 2. Format and Send Telegram Notification
+      const telegramMessage = `
+🚨 New Coaching Inquiry!
+
+👤 Name: ${data.full_name}
+📱 WhatsApp: ${data.whatsapp}
+✉️ Email: ${data.email}
+
+🎯 Goal: ${data.primary_goal}
+🏃 Activity Level: ${data.activity_level}
+🏋️ Setup: ${data.training_environment}
+⏱️ Time: ${data.time_commitment}
+🤕 Injuries: ${data.injuries}
+
+⚠️ Biggest Struggle: 
+${data.biggest_struggle}
+      `;
+
+      await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: TG_CHAT, text: msg, parse_mode: 'HTML' })
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: telegramMessage
+        })
       });
 
+      // 3. Show Success Message on Website
       document.getElementById('coachingForm').style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
 
     } catch (err) {
+      console.error(err);
       btn.textContent = 'Something went wrong. Try again.';
       btn.disabled = false;
     }
   });
-</script>
-</body>
-</html>
