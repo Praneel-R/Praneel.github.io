@@ -2,9 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Coaching — Praneel Rajesh</title>
 <meta name="description" content="Personalised online fitness coaching for general fitness, strength training and fat loss. Book a free discovery call with Praneel Rajesh, Bangalore.">
@@ -37,29 +34,6 @@
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
   @media (prefers-reduced-motion: reduce) { .reveal { opacity:1; transform:none; transition:none; } }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 18px var(--pad);
-    background: rgba(255,255,255,0.96);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo { font-family: var(--display); font-weight: 800; font-size: 20px; text-decoration: none; color: var(--black); letter-spacing: 0.02em; }
-  .nav-logo span { background: var(--black); color: var(--lime); padding: 1px 6px; }
-  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; margin-left: auto; }
-  .nav-links a { font-size: 13px; font-weight: 500; color: var(--grey); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--black); }
-  .nav-links .nav-cta {
-    background: var(--black); color: var(--white);
-    padding: 10px 20px; font-size: 13px; font-weight: 600;
-    text-decoration: none; letter-spacing: 0.04em;
-    transition: background 0.2s, color 0.2s;
-  }
-  .nav-links .nav-cta:hover { background: var(--lime); color: var(--black); }
-  @media (max-width: 640px) { .nav-links { gap: 14px; } }
 
   /* ── HERO ── */
   .hero {
@@ -350,16 +324,30 @@
     .booking-inner { grid-template-columns: 1fr; gap: 40px; }
     .hero-cta-group { flex-direction: column; }
   }
+
+  @media (max-width: 640px) {
+  }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <a href="/" style="background: #C8F400; color: #0D0D0D; padding: 10px 20px; font-weight: 800; text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;">Athlete Page</a>
-  <ul class="nav-links">
-    <li><a href="https://instagram.com/praneel_226" target="_blank" style="font-weight: 600; color: #0D0D0D; text-transform: uppercase; letter-spacing: 0.05em;">Instagram</a></li>
-  </ul>
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:32px;padding:0 clamp(20px,5vw,80px);background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);border-bottom:1px solid #E4E4E4;height:60px;box-sizing:border-box;">
+
+  <!-- Logo — matches PR226 on athlete page -->
+  <a href="/" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:20px;text-decoration:none;color:#0D0D0D;letter-spacing:0.02em;flex-shrink:0;">PR<span style="background:#0D0D0D;color:#C8F400;padding:1px 6px;">226</span></a>
+
+  <!-- Centre nav links — matches athlete page style -->
+  <div class="nav-centre" style="display:flex;align-items:center;gap:32px;margin:0 auto;">
+    <a href="#services" style="font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#666666;text-decoration:none;letter-spacing:0.04em;white-space:nowrap;transition:color 0.2s;">Services</a>
+    <a href="#testimonials" style="font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#666666;text-decoration:none;letter-spacing:0.04em;white-space:nowrap;">Results</a>
+    <a href="#apply" style="font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#666666;text-decoration:none;letter-spacing:0.04em;white-space:nowrap;">Apply</a>
+    <a href="/" style="font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#666666;text-decoration:none;letter-spacing:0.04em;white-space:nowrap;">Athlete Page</a>
+  </div>
+
+  <!-- CTA button — matches TRAIN WITH ME on athlete page -->
+  <a href="https://instagram.com/praneel_226" target="_blank" style="font-family:'Inter',sans-serif;background:#C8F400;color:#0D0D0D;padding:12px 22px;font-size:13px;font-weight:800;text-decoration:none;text-transform:uppercase;letter-spacing:0.06em;display:inline-flex;align-items:center;white-space:nowrap;flex-shrink:0;">Instagram</a>
+
 </nav>
 
 <!-- HERO -->
