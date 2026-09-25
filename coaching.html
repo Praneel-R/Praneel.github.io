@@ -327,6 +327,10 @@
 
   @media (max-width: 640px) {
   }
+
+  @media (max-width: 768px) {
+    .photo-coach-grid { grid-template-columns: 1fr !important; }
+  }
 </style>
 </head>
 <body>
@@ -385,6 +389,52 @@
       <div class="cred-card">
         <div class="cred-num">1-on-1</div>
         <div class="cred-label">Direct coaching access</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PERSONAL PHOTO SECTION -->
+<section style="padding:0;border-bottom:1px solid #E4E4E4;display:grid;grid-template-columns:1fr 1fr;min-height:500px;">
+
+  <!-- Photo slot left -->
+  <div style="background:#F0F0F0;position:relative;overflow:hidden;min-height:400px;display:flex;align-items:center;justify-content:center;">
+    <!--
+      TO ADD YOUR PHOTO:
+      Replace the placeholder div below with:
+      <img src="your-photo.jpg" alt="Praneel Rajesh" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+      Save the photo in the same folder as this HTML file.
+      Best: a portrait or action shot where your face is clearly visible.
+    -->
+    <div style="text-align:center;color:#999;padding:40px;">
+      <div style="font-size:48px;margin-bottom:12px;">📸</div>
+      <p style="font-size:13px;line-height:1.6;">Add your photo here<br><small>Replace this div with an img tag</small></p>
+    </div>
+  </div>
+
+  <!-- Text right -->
+  <div style="background:#0D0D0D;padding:clamp(40px,6vw,80px);display:flex;flex-direction:column;justify-content:center;">
+    <p style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.14em;color:#C8F400;text-transform:uppercase;margin-bottom:20px;">The Coach</p>
+    <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,5vw,60px);color:#FFFFFF;line-height:1;letter-spacing:-0.02em;margin-bottom:24px;">I train the same way I coach — seriously.</h2>
+    <p style="font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:24px;">I'm a professional badminton player turned endurance athlete. I turned to sport during one of the hardest chapters of my life — and it changed everything. Now I train for triathlons, ultras and Hyrox while helping others find that same discipline.</p>
+    <p style="font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:36px;">I don't coach from a textbook. I coach from experience — what works when your body is failing, your schedule is chaos, and you still have to show up.</p>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:8px;height:8px;background:#C8F400;border-radius:50%;flex-shrink:0;"></div>
+        <span style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.5);">10+ years competitive sport across 5 disciplines</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:8px;height:8px;background:#C8F400;border-radius:50%;flex-shrink:0;"></div>
+        <span style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.5);">Olympic triathlon, marathons, 12-hour stadium run completed</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:8px;height:8px;background:#C8F400;border-radius:50%;flex-shrink:0;"></div>
+        <span style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.5);">Based in Bangalore — coaching clients worldwide</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:8px;height:8px;background:#C8F400;border-radius:50%;flex-shrink:0;"></div>
+        <span style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.5);">Follow the journey: <a href="https://instagram.com/praneel_226" target="_blank" style="color:#C8F400;text-decoration:none;font-weight:600;">@praneel_226</a></span>
       </div>
     </div>
   </div>
@@ -616,7 +666,7 @@
           <div class="trust-icon">📱</div>
           <div class="trust-text">
             <strong>Fully online</strong>
-            Train from anywhere in India. All you need is your phone and a goal.
+            Train from anywhere in the world. All you need is your phone and a goal.
           </div>
         </div>
       </div>
@@ -694,16 +744,20 @@
           <textarea name="biggest_struggle" placeholder="What has been holding you back from reaching your goals? (e.g., consistency, diet, lack of a plan...)" required></textarea>
         </div>
 
-        <button type="submit" class="form-submit">Send My Application →</button>
+        <button type="submit" class="form-submit">Submit Form →</button>
         <p class="form-note">I'll review your details and reach out on WhatsApp to schedule our 20-minute call.</p>
       </form>
 
       <div class="form-success" id="formSuccess">
         <div class="success-icon">✅</div>
         <h3>Application received.</h3>
-        <p>Thanks for reaching out. I'll review your goals and get back to you personally on WhatsApp within 24 hours.</p>
+        <p style="margin-bottom:12px;font-size:14px;color:#555;line-height:1.7;">Your details are with me. I'll review them and reach out on WhatsApp within 24 hours.</p>
+        <p style="margin-bottom:28px;font-size:13px;color:#999;line-height:1.6;">In the meantime, go ahead and book a time for your free discovery call. Once I review your application we'll use this slot.</p>
+        <a href="https://calendly.com/connect-praneel/30min" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#0D0D0D;color:#C8F400;padding:16px 32px;font-family:'Inter',sans-serif;font-size:14px;font-weight:800;text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:16px;width:100%;box-sizing:border-box;">
+          📅 Book Your Free Discovery Call →
+        </a>
+        <p style="font-size:11px;color:#bbb;line-height:1.6;">You'll both receive a calendar invite with a video link once the slot is confirmed.</p>
       </div>
-    </div>
   </div>
 </section>
 
@@ -714,7 +768,7 @@
       <p class="section-tag">Free Discovery Call</p>
       <h2 class="section-title">20 minutes. No pressure. Just a real conversation.</h2>
       <p>Before anything else, let's talk. Tell me your goals and I'll tell you honestly whether I can help. No hard sell, no commitment required.</p>
-      <a href="https://calendly.com" target="_blank" class="booking-cta">Book Your Free Call →</a>
+      <a href="#apply" class="booking-cta" onclick="event.preventDefault();document.getElementById('apply').scrollIntoView({behavior:'smooth'});">Book Your Free Call →</a>
     </div>
     <div class="booking-right reveal reveal-delay-2">
       <div class="booking-item">
@@ -871,8 +925,19 @@ ${data.biggest_struggle}
         })
       });
 
+      // Hide form, show success state with Calendly button
       document.getElementById('coachingForm').style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
+
+      // Reveal the booking section below
+      const bookingSection = document.getElementById('book');
+      if (bookingSection) {
+        bookingSection.style.display = 'block';
+        // Smooth scroll to success message after short delay
+        setTimeout(() => {
+          document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 300);
+      }
 
     } catch (err) {
       console.error(err);
