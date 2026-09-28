@@ -3,7 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Coaching — Praneel Rajesh</title>
+<title>Praneel Rajesh — Online Fitness Coach & Endurance Athlete | Bangalore</title>
+<meta name="description" content="Praneel Rajesh — professional badminton player turned endurance athlete and online fitness coach. Competing in triathlon, ultra running and Hyrox. Based in Bangalore, coaching clients worldwide.">
+<meta property="og:title" content="Praneel Rajesh — Athlete & Online Fitness Coach">
+<meta property="og:description" content="Professional badminton player turned endurance athlete. Triathlon, ultra running, Hyrox. Coaching clients worldwide from Bangalore.">
+<meta property="og:type" content="profile">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Praneel Rajesh",
+  "description": "Professional badminton player turned endurance athlete and online fitness coach. Competing in triathlon, ultra running and Hyrox. Based in Bangalore, India.",
+  "url": "https://praneel-athlete.vercel.app",
+  "sameAs": ["https://www.instagram.com/praneel_226"],
+  "jobTitle": "Online Fitness Coach & Endurance Athlete",
+  "knowsAbout": ["Triathlon", "Ultra Running", "Hyrox", "Badminton", "Strength Training"]
+}
+</script>
 <meta name="description" content="Personalised online fitness coaching for general fitness, strength training and fat loss. Book a free discovery call with Praneel Rajesh, Bangalore.">
 <meta name="keywords" content="online fitness coach Bangalore, personalised fitness program India, strength training coach online, fat loss program India, home workout coach Bangalore">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -338,25 +354,32 @@
 <body>
 
 <!-- NAV -->
-<nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:32px;padding:0 clamp(20px,5vw,80px);background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);border-bottom:1px solid #E4E4E4;height:60px;box-sizing:border-box;">
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,80px);background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);border-bottom:1px solid #E4E4E4;height:60px;box-sizing:border-box;overflow:hidden;">
 
   <!-- Logo -->
   <a href="/" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:20px;text-decoration:none;color:#0D0D0D;letter-spacing:0.02em;flex-shrink:0;">PR<span style="background:#0D0D0D;color:#C8F400;padding:1px 6px;">226</span></a>
 
-  <!-- Centre nav links -->
-  <div class="nav-centre" style="display:flex;align-items:center;gap:32px;margin:0 auto;">
-    <a href="#services" style="font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#666666;text-decoration:none;letter-spacing:0.04em;white-space:nowrap;">Services</a>
-    <a href="#testimonials" style="font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#666666;text-decoration:none;letter-spacing:0.04em;white-space:nowrap;">Results</a>
-    <a href="#apply" style="font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#666666;text-decoration:none;letter-spacing:0.04em;white-space:nowrap;">Apply</a>
+  <!-- Centre links — hidden on mobile -->
+  <div class="coaching-nav-centre" style="display:flex;align-items:center;gap:28px;">
+    <a href="#services" style="font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#666;text-decoration:none;letter-spacing:0.04em;white-space:nowrap;">Services</a>
+    <a href="#testimonials" style="font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#666;text-decoration:none;letter-spacing:0.04em;white-space:nowrap;">Results</a>
+    <a href="#apply" style="font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#666;text-decoration:none;letter-spacing:0.04em;white-space:nowrap;">Apply</a>
   </div>
 
-  <!-- Right side — Instagram then Athlete Page -->
-  <div style="display:flex;align-items:center;gap:12px;flex-shrink:0;">
-    <a href="https://instagram.com/praneel_226" target="_blank" style="font-family:'Inter',sans-serif;background:#0D0D0D;color:#C8F400;padding:12px 22px;font-size:13px;font-weight:800;text-decoration:none;text-transform:uppercase;letter-spacing:0.06em;display:inline-flex;align-items:center;white-space:nowrap;">Instagram</a>
-    <a href="https://praneel-athlete.vercel.app/" target="_blank" style="font-family:'Inter',sans-serif;background:#C8F400;color:#0D0D0D;padding:12px 22px;font-size:13px;font-weight:800;text-decoration:none;text-transform:uppercase;letter-spacing:0.06em;display:inline-flex;align-items:center;white-space:nowrap;">Athlete Page</a>
+  <!-- Right buttons — on mobile only show Athlete Page -->
+  <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+    <a href="https://instagram.com/praneel_226" target="_blank" class="coaching-nav-ig" style="font-family:'Inter',sans-serif;background:#0D0D0D;color:#C8F400;padding:12px 18px;font-size:13px;font-weight:800;text-decoration:none;text-transform:uppercase;letter-spacing:0.06em;display:inline-flex;align-items:center;white-space:nowrap;">Instagram</a>
+    <a href="https://praneel-athlete.vercel.app/" style="font-family:'Inter',sans-serif;background:#C8F400;color:#0D0D0D;padding:12px 18px;font-size:13px;font-weight:800;text-decoration:none;text-transform:uppercase;letter-spacing:0.06em;display:inline-flex;align-items:center;white-space:nowrap;">Athlete Page</a>
   </div>
 
 </nav>
+
+<style>
+  @media (max-width: 768px) {
+    .coaching-nav-centre { display: none !important; }
+    .coaching-nav-ig { display: none !important; }
+  }
+</style>
 
 <!-- HERO -->
 <section class="hero">
